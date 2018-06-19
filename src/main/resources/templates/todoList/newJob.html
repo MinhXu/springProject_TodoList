@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>New Job</title>
+</head>
+<body>
+
+<form th:action="@{/todoList/newJob}" th:object="${jobForm}" method="post" >
+
+<td><a th:href="@{/todoList/jobList}" >Back</a></td>
+
+<h2> Adding JOB</h2>
+<table cellpadding = "2" cellspacing ="2" border ="1">
+	<tr>
+		<th>ID</th>
+	 	<td><input type="number" th:field="*{jobId}"/></td>
+	 </tr>
+	<tr>
+		<th>Description</th>
+		<td><input type="text" th:field="*{jobDescription}"  value="Add the job Description" /></td>
+	</tr>
+	<tr>
+		<th>Creation Date</th>
+		<td><input type="date" th:field="*{jobCreateDate}" value="${today}" /></td>
+	</tr>
+	<tr>
+		<th>Status</th>
+		<td>
+		<select th:field="*{jobStatus}" th:value ="unfinised">
+                <option value="unfinished">Unfinised</option>
+                <option value="finished">Finished</option>
+         </select>
+         </td>
+	</tr>	
+	<tr>
+		<th>Rate</th>
+		<td><select th:field= "*{jobRate}" th:value ="high" >
+                <option value="high">High</option>
+                <option value="normal">Normal</option>
+                <option value="low">Low</option>
+         </select></td>
+	</tr>	
+</table>
+<br/>
+ <tr>
+      <td><input type="submit" value="Submit" /></td>
+      <td><input type="reset" value="Reset" /></td>
+  </tr>
+</form>
+
+<br/>
+
+<!-- Check if errorMessage is not null and not empty -->
+       
+      <div th:if="${errorMessage}" th:utext="${errorMessage}"
+         style="color:red;font-style:italic;">
+         ...
+      </div>
+</body>
+</html>

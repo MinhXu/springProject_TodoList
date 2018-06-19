@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Job List</title>
+</head>
+<body>
+
+<h2> MY SCHEDULING</h2>
+
+
+<form action="jobList" method="POST" modelAttribute="jobData">
+
+<tr>
+	<td><a th:href="@{newJob}" >Add New Job</a></td>
+<!-- 	<td>Filter</td> -->
+<!-- 	<td> -->
+<!-- 		<select th:name="filter" th:value ="id" th:onChange="@{/todoList/unfinishjobList/}" > -->
+<!--                <option value="id" >ID</option> -->
+<!--                <option value="date">Date</option> -->
+<!--                <option value="status">Status</option> -->
+<!--         </select> -->
+<!--     </td> -->
+</tr>
+
+<br/>
+<table cellpadding = "2" cellspacing ="2" border ="1">
+
+	<tr>
+		<th>Id</th>
+		<th>Description</th>
+		<th>Creation Date</th>
+		<th>Status</th>
+		<th>Rate</th>
+		<th>Action</th>
+	</tr>
+	<tr th:each="job,iterStat: ${jobList}">
+	<form th:object="${eachJob}" method="get" id="search-owner-form">
+		<td><span th:text = "${job.jobId}" th:name = "idJ"></span></td>
+		<td><span th:text = "${job.jobDescription}"></span></td>
+		<td><span th:text = "${job.jobCreateDate}"></span></td>
+		<td><span th:text = "${job.jobStatus}"></span></td>
+		<td><span th:text = "${job.jobRate}"></span></td>
+		<td> 
+			<a th:href= "@{'jobList/'+${job.jobId}}">Delete</a>
+  			<a th:href="@{'jobInfo/'+ ${job.jobId}}" >Edit</a>
+		</td>
+		</form>
+	</tr>
+	
+	
+</table>
+
+
+</form>
+</body>
+</html>

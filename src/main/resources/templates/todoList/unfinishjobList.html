@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Job List</title>
+</head>
+<body>
+
+
+<h2> Unfinished Job List</h2>
+<table cellpadding = "2" cellspacing ="2" border ="1">
+
+	<tr>
+		<th>Id</th>
+		<th>Description</th>
+		<th>Creation Date</th>
+		<th>Status</th>
+		<th>Rate</th>
+	</tr>
+	<tr th:each="job,iterStat: ${unfinishjobList}">
+		<td><span th:text = "${job.jobId}"></span></td>
+		<td><span th:text = "${job.jobDescription}"></span></td>
+		<td><span th:text = "${job.jobCreateDate}"></span></td>
+		<td><span th:text = "${job.jobStatus}"></span></td>
+		<td><span th:text = "${job.jobRate}"></span></td>
+	</tr>
+	
+</table>
+</body>
+</html>

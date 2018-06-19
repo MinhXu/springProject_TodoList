@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Job Information</title>
+</head>
+<body>
+It is the information form of Job
+
+<form th:action="@{/todoList/jobInfo}" th:object="${jobForm}"  method="post">
+<h2> Job Information</h2>
+
+<td><a th:href="@{/todoList/jobList}" >Back</a></td>
+
+<table cellpadding = "2" cellspacing ="2" border ="1">
+	<tr>
+		<th>Id</th>
+		<td><input type="number" th:field="*{jobId}" /></td>
+	</tr>
+	<tr>
+		<th>Description</th>
+		<td><input type="text" th:field="*{jobDescription}"/></td>
+	</tr>
+	<tr>
+		<th>Creation Date</th>
+		<td><input type="date" th:field ="*{jobCreateDate}" th:value ="*{jobCreateDate}" required="required"/></td>
+	</tr>
+	
+	<tr>
+		<th>Status</th>
+		<td>
+		<select th:field="*{jobStatus}" th:value="*{jobStatus}">
+                <option value="unfinished">Unfinised</option>
+                <option value="finished">Finished</option>
+         </select>
+         </td>
+	</tr>	
+	<tr>
+		<th>Rate</th>
+		<td><select th:field= "*{jobRate}" th:value ="*{jobRate}" >
+                <option value="high">High</option>
+                <option value="normal">Normal</option>
+                <option value="low">Low</option>
+         </select></td>
+	</tr>	
+	
+</table>
+<br/>
+ <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+</form>
+</body>
+</html>
